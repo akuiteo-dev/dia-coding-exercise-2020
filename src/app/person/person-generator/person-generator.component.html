@@ -1,0 +1,21 @@
+<form [formGroup]="generator" (ngSubmit)="generate()">
+	<div class="title">
+		<h3>Critères de génération :</h3>
+		<div class="hint">
+			Veuillez saisir le nombre de personnes à générer ainsi que le choix du genre.
+		</div>
+	</div>
+
+	<mat-form-field class="count">
+		<input matInput type="number" placeholder="Nombre" formControlName="count">
+	</mat-form-field>
+
+	<div class="gender">
+		<mat-checkbox class="Homme" formControlName="male">Homme</mat-checkbox>
+		<mat-checkbox class="Femme" formControlName="female">Femme</mat-checkbox>
+	</div>
+
+	<div class="actions">
+		<button mat-raised-button type="submit" [disabled]="generator.invalid">Générer</button>
+	</div>
+</form>
