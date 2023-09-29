@@ -1,0 +1,18 @@
+{
+    "extends": "../tsconfig.json",
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true
+    },
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "outDir": "../../../dist/out-tsc/apps",
+    },
+    "include": [
+        "**/*.ts"
+    ],
+    "exclude": [
+        "test.ts",
+        "**/*.spec.ts"
+    ]
+}
