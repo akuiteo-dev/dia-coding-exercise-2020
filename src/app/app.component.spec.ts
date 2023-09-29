@@ -23,7 +23,7 @@ describe("AppComponent", () => {
 
 	test("should render title in a h1 tag", () => {
 		const h1 = fixture.nativeElement.querySelector('h1');
-		expect(h1.textContent).toContain(component.title);
+		expect(h1.textContent).toEqual(component.title);
 	});
 
 });
