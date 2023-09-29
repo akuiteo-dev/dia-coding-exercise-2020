@@ -1,8 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { FormBuilder, FormGroup, ValidationErrors, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { GenerationConfig } from "../generation-config";
-
 @Component({
 	selector: "app-person-generator",
 	templateUrl: "./person-generator.component.html",
@@ -10,7 +8,7 @@ import { GenerationConfig } from "../generation-config";
 })
 export class PersonGeneratorComponent implements OnInit {
 
-	generator: FormGroup;
+	generator!: FormGroup;
 
 	@Output()
 	private generateRequest = new EventEmitter<GenerationConfig>();

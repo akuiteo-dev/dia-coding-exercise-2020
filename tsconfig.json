@@ -1,68 +1,36 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-    "compileOnSave": false,
-    "angularCompilerOptions": {
-        "preserveWhitespaces": false
-    },
-    "compilerOptions": {
-        "baseUrl": ".",
-        "module": "esnext",
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "downlevelIteration": true,
-        "experimentalDecorators": true,
-        "removeComments": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "noImplicitAny": true,
-        "newLine": "CRLF",
-        "target": "es5",
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2018",
-            "dom"
-        ],
-        "paths": {
-            "@libs/*": [
-                "libs/*"
-            ],
-            "@core/*": [
-                "core/*"
-            ],
-            "@commons/*": [
-                "commons/*"
-            ],
-            "@apis/*": [
-                "apis/*"
-            ],
-            "@admin/*": [
-                "apps/admin/src/*"
-            ],
-            "@collabs/*": [
-                "apps/collabs/src/*"
-            ],
-            "@soft/*": [
-                "apps/soft/src/*"
-            ],
-            "@launcher/*": [
-                "apps/launcher/src/*"
-            ],
-            "@collabs-commons/*": [
-                "apps/collabs/src/commons/*"
-            ],
-            "@collabs-core/*": [
-                "apps/collabs/src/core/*"
-            ],
-            "@collabs-perso/*": [
-                "apps/collabs/src/core/components/perso/*"
-            ],
-            "@collabs-liste-aide": [
-                "apps/collabs/src/commons/liste-aide"
-            ],
-            "core-js/es7/reflect": [
-                "../node_modules/core-js/proposals/reflect-metadata"
-            ]
-        }
-    }
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }

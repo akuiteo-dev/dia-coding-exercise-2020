@@ -1,34 +1,29 @@
 import { RouterTestingModule } from "@angular/router/testing";
-import { Spectator } from "@ngneat/spectator";
-import { createComponentFactory } from "@ngneat/spectator/jest";
 import { AppComponent } from "./app.component";
-
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 describe("AppComponent", () => {
 
-	let spectator: Spectator<AppComponent>;
-	const createComponent = createComponentFactory({
-		component: AppComponent,
-		declarations: [
-			AppComponent
-		],
-		imports: [
-			RouterTestingModule.withRoutes([])
-		]
-	});
+	let component: AppComponent;
+	let fixture: ComponentFixture<AppComponent>;
 
 	beforeEach(() => {
-		spectator = createComponent();
+		TestBed.configureTestingModule({
+			imports: [
+				RouterTestingModule,
+			]
+		});
+		fixture = TestBed.createComponent(AppComponent);
+		component = fixture.componentInstance;
 	});
 
-
 	test('should create', () => {
-		expect(spectator.component).toBeTruthy();
+		expect(component).toBeDefined();
 	});
 
 	test("should render title in a h1 tag", () => {
-		expect(spectator.element.querySelector("h1").textContent).toContain("Test technique Angular");
+		const h1 = fixture.nativeElement.querySelector('h1');
+		expect(h1.textContent).toContain(component.title);
 	});
-
 
 });

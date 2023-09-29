@@ -29,4 +29,4 @@ Il est possible d'utiliser les scripts préconfigurés `npm` pour démarrer l'ap
 * `yarn run lint` pour s'assurer que le code respecte les conventions de code
 
 
-_Ce projet a été généré au moyen d'[Angular CLI](https://github.com/angular/angular-cli) version 7.2.1._
+_Ce projet a été généré au moyen d'[Angular CLI](https://github.com/angular/angular-cli) version 16.2.0._

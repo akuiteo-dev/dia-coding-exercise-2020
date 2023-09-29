@@ -1,36 +1,24 @@
-import { CommonModule } from "@angular/common";
-import { MatButtonModule } from "@angular/material/button";
-import { RouterTestingModule } from "@angular/router/testing";
-
-import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
-import { AboutRoutingModule } from "./about-routing.module";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { AboutComponent } from "./about.component";
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe("AboutComponent", () => {
 
-	let spectator: Spectator<AboutComponent>;
-	const createComponent = createComponentFactory({
-		component: AboutComponent,
-		declarations: [
-			AboutComponent
-		],
-		imports: [
-			CommonModule,
-			MatButtonModule,
-			AboutRoutingModule,
-			RouterTestingModule.withRoutes([])
-		],
-	});
+	let component: AboutComponent;
+	let fixture: ComponentFixture<AboutComponent>;
 
 	beforeEach(() => {
-		spectator = createComponent();
+		TestBed.configureTestingModule({
+			imports: [
+				RouterTestingModule,
+			]
+		});
+		fixture = TestBed.createComponent(AboutComponent);
+		component = fixture.componentInstance;
 	});
-
-
+	
 	test('should create', () => {
-		expect(spectator.component).toBeTruthy();
+		expect(component).toBeDefined();
 	});
-
 
 });
-

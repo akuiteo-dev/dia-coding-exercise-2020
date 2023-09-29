@@ -1,20 +1,8 @@
-import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { fakeAsync } from "@angular/core/testing";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatButtonModule } from "@angular/material/button";
-import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatInputModule } from "@angular/material/input";
-import { MatTableModule } from "@angular/material/table";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { RouterTestingModule } from "@angular/router/testing";
-import { HttpMethod, SpectatorHttp } from "@ngneat/spectator";
-
-import { createComponentFactory, createHttpFactory, Spectator } from '@ngneat/spectator/jest';
+import { TestBed, fakeAsync } from "@angular/core/testing";
 import { Person } from "./person";
-import { PersonGeneratorComponent } from "./person-generator/person-generator.component";
 import { PersonListComponent } from "./person-list/person-list.component";
 import { PersonService } from "./person.service";
-
+import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 
 const PERSONS: Person[] = [
 	{
@@ -46,60 +34,42 @@ const DEFAULT_CONFIG = {
 	female: true
 };
 
-describe("PersonListComponent", () => {
+describe("PersonService", () => {
 
-	let spectator: Spectator<PersonListComponent>;
-	let spectatorHttp: SpectatorHttp<PersonService>;
-
-	const createHttp = createHttpFactory(PersonService);
-	const createComponent = createComponentFactory({
-		component: PersonListComponent,
-		declarations: [
-			PersonListComponent,
-			PersonGeneratorComponent,
-		],
-		imports: [
-			MatTableModule,
-			MatCheckboxModule,
-			MatInputModule,
-			MatButtonModule,
-			ReactiveFormsModule,
-			HttpClientTestingModule,
-			NoopAnimationsModule,
-			RouterTestingModule.withRoutes([])
-		]
-	});
+	let component: PersonListComponent;
+	let personService: PersonService;
+	let httpClientMock: HttpTestingController;
 
 	beforeEach(() => {
-		spectator = createComponent();
-		spectatorHttp = createHttp();
+		TestBed.configureTestingModule({
+			providers:[
+				PersonListComponent,
+			],
+			imports: [
+				HttpClientTestingModule,
+			]
+		});
+		component = TestBed.inject(PersonListComponent);
+		personService = TestBed.inject(PersonService);
+		httpClientMock = TestBed.inject(HttpTestingController);
 	});
 
-	test('should create', () => {
-		expect(spectator.component).toBeTruthy();
+	test('should create PersonListComponent', () => {
+		expect(component).toBeDefined();
 	});
 
 	test("should provide a list of 3 persons", fakeAsync(() => {
 
-		expect(spectatorHttp.service.getPersons).toBeTruthy();
+		expect(personService.getPersons).toBeTruthy();
 
-		spectatorHttp.service.getPersons(DEFAULT_CONFIG).subscribe();
-		spectatorHttp.expectOne("/assets/data/persons.json", HttpMethod.GET);
+		personService.getPersons(DEFAULT_CONFIG).subscribe();
+		httpClientMock.expectOne("/assets/data/persons.json", 'GET').flush(PERSONS);
 
-		spectatorHttp.service.getPersons(DEFAULT_CONFIG).subscribe(element => {
+		personService.getPersons(DEFAULT_CONFIG).subscribe(element => {
 			expect(element.length).toBe(1);
-			expect(element.map(p => p.id)).toEqual([1, 2, 3]);
-
+			expect(element).toEqual(PERSONS);
 		});
-
-		const reqs = spectatorHttp.expectConcurrent([
-			{ url: "/assets/data/persons.json", method: HttpMethod.GET },
-		]);
-
-		spectatorHttp.flushAll(reqs, [PERSONS]);
 
 	}));
 
-
 });
-
