@@ -1,6 +1,7 @@
 import {RouterTestingModule} from "@angular/router/testing";
 import {AppComponent} from "./app.component";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {TranslateModule} from "@ngx-translate/core";
 
 describe("AppComponent", () => {
 
@@ -11,6 +12,7 @@ describe("AppComponent", () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        TranslateModule.forRoot(),
       ]
     });
     fixture = TestBed.createComponent(AppComponent);

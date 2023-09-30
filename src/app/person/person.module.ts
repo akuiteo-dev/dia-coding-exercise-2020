@@ -10,6 +10,7 @@ import {PersonGeneratorComponent} from "./person-generator/person-generator.comp
 import {PersonListComponent} from "./person-list/person-list.component";
 import {PersonRoutingModule} from "./person-routing.module";
 import {PersonService} from "./person.service";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {PersonService} from "./person.service";
     MatCheckboxModule,
     MatTableModule,
     ReactiveFormsModule,
+    TranslateModule,
   ]
 })
 export class PersonModule {
