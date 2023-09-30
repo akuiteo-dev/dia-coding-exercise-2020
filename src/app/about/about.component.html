@@ -1,6 +1,12 @@
-<p>
-	Ce test technique a pour objectif de valider les compétences Angular du Candidat.
-</p>
-<p>
-	<a routerLink="/" mat-button>Retour</a>
-</p>
+<mat-card class="about-card">
+  <mat-card-content class="about-card-content">
+    <p>
+      Ce test technique a pour objectif de valider les compétences Angular du Candidat.
+    </p>
+  </mat-card-content>
+  <mat-card-actions [align]="'start'">
+    <button [color]="'accent'" aria-label="Example icon-button with share icon" mat-raised-button routerLink="/">
+      Retour
+    </button>
+  </mat-card-actions>
+</mat-card>

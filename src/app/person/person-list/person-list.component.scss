@@ -1,4 +1,10 @@
-:host {
-	display: flex;
-	flex-direction: column;
+.person-list-card {
+  margin: 2em;
+}
+
+.person-list-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
 }

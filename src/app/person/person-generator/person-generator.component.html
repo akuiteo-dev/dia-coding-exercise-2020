@@ -1,21 +1,26 @@
-<form [formGroup]="generator" (ngSubmit)="generate()">
-	<div class="title">
-		<h3>Critères de génération :</h3>
-		<div class="hint">
-			Veuillez saisir le nombre de personnes à générer ainsi que le choix du genre.
-		</div>
-	</div>
+<form (ngSubmit)="generate()" [formGroup]="generator" id="generatorForm">
 
-	<mat-form-field class="count">
-		<input matInput type="number" placeholder="Nombre" formControlName="count">
-	</mat-form-field>
+  <mat-card class="person-generator-card">
+    <mat-card-header>
+      <mat-card-title>Critères de génération</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="person-generator-card-content">
+      <mat-form-field class="field-count">
+        <mat-label>Nombre</mat-label>
+        <input [max]="1000" [min]="1" formControlName="count" matInput placeholder="Nombre" type="number">
+        <mat-hint>Veuillez saisir le nombre de personnes à générer ainsi que le choix du genre.</mat-hint>
+      </mat-form-field>
+      <div class="fields-gender">
+        <mat-checkbox formControlName="male">Homme</mat-checkbox>
+        <mat-checkbox formControlName="female">Femme</mat-checkbox>
+      </div>
+    </mat-card-content>
+    <mat-card-actions [align]="'end'" class="person-generator-card-actions">
+      <span *ngIf="generator.errors?.['noFieldSelected']">
+        Veuillez sélectionner au moins un genre
+      </span>
+      <button [color]="'primary'" [disabled]="generator.invalid" mat-raised-button type="submit">Générer</button>
+    </mat-card-actions>
+  </mat-card>
 
-	<div class="gender">
-		<mat-checkbox class="Homme" formControlName="male">Homme</mat-checkbox>
-		<mat-checkbox class="Femme" formControlName="female">Femme</mat-checkbox>
-	</div>
-
-	<div class="actions">
-		<button mat-raised-button type="submit" [disabled]="generator.invalid">Générer</button>
-	</div>
 </form>
