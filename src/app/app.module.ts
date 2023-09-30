@@ -8,6 +8,9 @@ import {AppRoutingModule} from "./app-routing.module";
 import {AppComponent} from "./app.component";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {BannerComponent} from "./shared/components/banner/banner.component";
 
 export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -31,6 +34,9 @@ export function httpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    MatToolbarModule,
+    MatIconModule,
+    BannerComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,6 +11,8 @@ import {PersonListComponent} from "./person-list/person-list.component";
 import {PersonRoutingModule} from "./person-routing.module";
 import {PersonService} from "./person.service";
 import {TranslateModule} from "@ngx-translate/core";
+import {MatCardModule} from "@angular/material/card";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import {TranslateModule} from "@ngx-translate/core";
     MatTableModule,
     ReactiveFormsModule,
     TranslateModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class PersonModule {

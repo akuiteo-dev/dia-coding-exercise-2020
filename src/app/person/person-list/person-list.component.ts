@@ -3,6 +3,7 @@ import {GenerationConfig} from "../generation-config";
 import {Person} from "../person";
 import {PersonService} from "../person.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {tap} from "rxjs";
 
 @Component({
   selector: "app-person-list",
@@ -17,7 +18,16 @@ export class PersonListComponent {
   constructor(private personService: PersonService) {
   }
 
+  private _dataLoading = false;
+
+  get dataLoading(): boolean {
+    return this._dataLoading;
+  }
+
   generate(config: GenerationConfig) {
-    this.personService.getPersons(config).subscribe(value => this.dataSource.data = value);
+    this._dataLoading = true;
+    this.personService.getPersons(config)
+      .pipe(tap(() => this._dataLoading = false))
+      .subscribe(value => this.dataSource.data = value);
   }
 }

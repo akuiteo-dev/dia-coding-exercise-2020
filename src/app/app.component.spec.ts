@@ -23,9 +23,4 @@ describe("AppComponent", () => {
     expect(component).toBeDefined();
   });
 
-  test("should render title in a h1 tag", () => {
-    const h1 = fixture.nativeElement.querySelector('h1');
-    expect(h1.textContent).toEqual(component.title);
-  });
-
 });

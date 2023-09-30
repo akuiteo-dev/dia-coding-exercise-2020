@@ -1,33 +1,45 @@
 <app-person-generator (generateRequest)="generate($event)">
 </app-person-generator>
 
-<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
 
-  <ng-container matColumnDef="id">
-    <th *matHeaderCellDef mat-header-cell> #</th>
-    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
-  </ng-container>
+<mat-card class="person-list-card">
+  <mat-card-content class="person-list-card-content">
 
-  <ng-container matColumnDef="firstName">
-    <th *matHeaderCellDef mat-header-cell> Prénom</th>
-    <td *matCellDef="let element" mat-cell> {{element.firstName}} </td>
-  </ng-container>
+    <mat-spinner *ngIf="dataLoading"></mat-spinner>
 
-  <ng-container matColumnDef="lastName">
-    <th *matHeaderCellDef mat-header-cell> Nom</th>
-    <td *matCellDef="let element" mat-cell> {{element.lastName}} </td>
-  </ng-container>
+    <span *ngIf="!dataLoading && (!dataSource.data || dataSource.data.length === 0)">Aucune donnée générée</span>
 
-  <ng-container matColumnDef="gender">
-    <th *matHeaderCellDef mat-header-cell> Sexe</th>
-    <td *matCellDef="let element" mat-cell> {{element.gender | translate}} </td>
-  </ng-container>
+    <table *ngIf="!dataLoading && dataSource.data.length > 0" [dataSource]="dataSource" class="person-list-table"
+           mat-table>
 
-  <ng-container matColumnDef="email">
-    <th *matHeaderCellDef mat-header-cell> Email</th>
-    <td *matCellDef="let element" mat-cell> {{element.email}} </td>
-  </ng-container>
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef class="person-list-col" mat-header-cell> #</th>
+        <td *matCellDef="let element" class="person-list-col" mat-cell> {{element.id}} </td>
+      </ng-container>
 
-  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
-</table>
+      <ng-container matColumnDef="firstName">
+        <th *matHeaderCellDef class="person-list-col" mat-header-cell> Prénom</th>
+        <td *matCellDef="let element" class="person-list-col" mat-cell> {{element.firstName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th *matHeaderCellDef class="person-list-col" mat-header-cell> Nom</th>
+        <td *matCellDef="let element" class="person-list-col" mat-cell> {{element.lastName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <th *matHeaderCellDef class="person-list-col" mat-header-cell> Sexe</th>
+        <td *matCellDef="let element" class="person-list-col" mat-cell> {{element.gender | translate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th *matHeaderCellDef class="person-list-col" mat-header-cell> Email</th>
+        <td *matCellDef="let element" class="person-list-col" mat-cell> {{element.email}} </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+
+  </mat-card-content>
+</mat-card>

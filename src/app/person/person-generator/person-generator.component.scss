@@ -1,38 +1,33 @@
-form {
+.person-generator-card {
+  margin: 2em;
+}
+
+@media (min-width: 720px) {
+  .person-generator-card {
+    width: 50vw;
+  }
+}
+
+.person-generator-card-content {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2em;
+}
 
-  div, mat-form-field {
-    flex: 1;
-    align-items: center;
+.person-generator-card-actions {
+  gap: 2em;
+}
 
-    display: flex;
-    justify-content: center;
-  }
+.field-count {
+  flex-grow: 1;
+}
 
-  .title {
-    flex-direction: column;
-
-    div {
-      font-style: italic;
-      font-size: 0.7em;
-    }
-  }
-
-  .count {
-    flex: 1;
-  }
-
-  .gender {
-    display: flex;
-    justify-content: center;
-
-    mat-checkbox {
-      width: 150px;
-    }
-  }
-
-  .actions {
-  }
+.fields-gender {
+  display: flex;
+  gap: 2em;
+  justify-content: space-evenly;
+  align-items: center;
 }
