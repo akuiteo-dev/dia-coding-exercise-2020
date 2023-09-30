@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
-import {AboutRoutingModule} from "./about-routing.module";
 import {MatButtonModule} from "@angular/material/button";
 import {CommonModule} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: "app-about",
@@ -9,7 +9,7 @@ import {CommonModule} from "@angular/common";
   imports: [
     CommonModule,
     MatButtonModule,
-    AboutRoutingModule,
+    RouterLink,
   ],
   templateUrl: "./about.component.html",
   styleUrls: ["./about.component.scss"]

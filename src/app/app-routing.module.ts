@@ -10,7 +10,11 @@ export const routes: Routes = [
     path: "",
     pathMatch: "full",
     redirectTo: "personnes"
-  }
+  },
+  {
+    path: "apropos",
+    loadComponent: () => import("./about/about.component").then(m => m.AboutComponent)
+  },
 ];
 
 @NgModule({
