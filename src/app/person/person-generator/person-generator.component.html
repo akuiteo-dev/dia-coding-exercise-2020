@@ -1,4 +1,4 @@
-<form (ngSubmit)="generate()" [formGroup]="generator">
+<form (ngSubmit)="generate()" [formGroup]="generator" id="generatorForm">
   <div class="title">
     <h3>Critères de génération :</h3>
     <div class="hint">
@@ -7,7 +7,7 @@
   </div>
 
   <mat-form-field class="count">
-    <input formControlName="count" matInput placeholder="Nombre" type="number">
+    <input [max]="1000" [min]="1" formControlName="count" matInput placeholder="Nombre" type="number">
   </mat-form-field>
 
   <div class="gender">

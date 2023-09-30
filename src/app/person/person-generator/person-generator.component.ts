@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from "@angular/core";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {GenerationConfig} from "../generation-config";
+import {atLeastOneFieldValueTruthy} from "../../shared/validators/at-least-one-field-selected.validator";
 
 @Component({
   selector: "app-person-generator",
@@ -18,15 +19,19 @@ export class PersonGeneratorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.generator = this.formBuilder.group({
-      count: [1000],
+    this.generator = this.formBuilder.nonNullable.group({
+      count: [1000, [Validators.required, Validators.min(1), Validators.max(1000)]],
       male: [true],
       female: [true]
-    });
+    }, {validators: [atLeastOneFieldValueTruthy(['male', 'female'])]});
   }
 
   generate() {
-    const value: GenerationConfig = this.generator.value;
+    const value: GenerationConfig = {
+      count: this.generator.value.count,
+      male: this.generator.value.male,
+      female: this.generator.value.female
+    };
     if (this.generator.valid)
       this.generateRequest.emit(value);
   }

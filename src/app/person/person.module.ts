@@ -14,7 +14,7 @@ import {PersonService} from "./person.service";
 @NgModule({
   declarations: [
     PersonListComponent,
-    PersonGeneratorComponent
+    PersonGeneratorComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +24,7 @@ import {PersonService} from "./person.service";
     MatButtonModule,
     MatCheckboxModule,
     MatTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class PersonModule {
